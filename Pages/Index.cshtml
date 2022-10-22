@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    @if (Model.Roles != null)
+    {
+        <h1>Roles</h1>
+        <ul>
+            @foreach (var role in Model.Roles)
+            {
+                <li>@role</li>
+            }
+            <form method="post">
+                <input type="text" name="role" class="form-control" />
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Add</button>
+            </form>
+        </ul>
+    }
+
+    @if (Model.Claims != null)
+    {
+        <h1>Claims</h1>
+        <ul>
+            @foreach (var claim in Model.Claims)
+            {
+                <li>@claim.Type: @claim.Value</li>
+            }
+        </ul>
+    }
+
+    @if (Model.Logins != null)
+    {
+        <h1>Logins</h1>
+        <ul>
+            @foreach (var login in Model.Logins)
+            {
+                <li>@login.LoginProvider: @login.ProviderKey</li>
+            }
+        </ul>
+    }
+</div>
